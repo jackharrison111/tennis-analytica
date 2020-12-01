@@ -95,19 +95,19 @@ class CourtFinder(object):
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         hsv_mask = cv2.inRange(hsv_frame, lower_sat, upper_sat);
         if file_output:
-            cv2.imwrite("../UntrackedFiles/out/hsv_mask.png", hsv_mask);
+            cv2.imwrite("../UntrackedFiles/out/hsv_mask_Hue.png", hsv_mask);
 
         # Find the biggest region that closely matches the court's average color in RGB space
         win_rgb = win.copy();
         win_dominant_rgb = self.GetDominantColor(win_rgb);
-        r_thresh = 40;
+        r_thresh = 60;
         g_thresh = 40;
         b_thresh = 40;
         lower_rgb = win_dominant_rgb - [r_thresh, g_thresh, b_thresh];
         upper_rgb = win_dominant_rgb + [r_thresh, g_thresh, b_thresh];
         rgb_mask = cv2.inRange(frame, lower_rgb, upper_rgb);
         if file_output:
-            cv2.imwrite("../UntrackedFiles/out/rgb_mask.png", rgb_mask);
+            cv2.imwrite("../UntrackedFiles/out/rgb_mask_60.png", rgb_mask);
         court_mask = cv2.bitwise_and(rgb_mask, rgb_mask, mask=hsv_mask);
         if file_output:
             cv2.imwrite("../UntrackedFiles/out/court_mask.png", court_mask);

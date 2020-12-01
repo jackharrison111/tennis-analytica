@@ -65,7 +65,7 @@ class BallFinder(object):
         se = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
         maskFilt = cv2.morphologyEx(maskFilt, cv2.MORPH_DILATE, se)
         # add filter by eccenetricity to get rid of too big and components etc
-        ___notsure, contours, hier = cv2.findContours(maskFilt,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+        contours, hier = cv2.findContours(maskFilt,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
         maskEcc = np.zeros(maskFilt.shape, dtype="uint8");
         for c in contours:
             cArea = cv2.contourArea(c)

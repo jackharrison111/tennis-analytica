@@ -16,7 +16,7 @@ from mpl_toolkits.mplot3d import Axes3D
 def main(argv1, argv2, argv3):
 
     # generate poster/report photos?
-    posterPhotos = True
+    posterPhotos = False
 
     # get file names
     '''
@@ -34,26 +34,29 @@ def main(argv1, argv2, argv3):
     vr2 = VideoReader(videoFile2)
 
     # read in tennis court image
-    courtTopView = cv.imread('../SharedData/courtTop.png')
+    courtTopView = cv.imread('courtTopView.png')
     courtTopView = cv.cvtColor(courtTopView, cv.COLOR_BGR2RGB)
     courtHeight, courtWidth, _ = courtTopView.shape
-    netSideView = cv.imread('../SharedData/netSide.png')
+    netSideView = cv.imread('netSide.png')
     netSideView = cv.cvtColor(netSideView, cv.COLOR_BGR2RGB)
     netHeight, netWidth, _ = netSideView.shape
 
     # read in results data
-    with open(dataFile, 'rb') as csvfile:
+    with open(dataFile, 'r') as csvfile:
         dataReader = csv.reader(csvfile, delimiter=',')
-        numFramesData = sum(1 for _ in dataReader)
+        numFramesData = sum(1 for row in dataReader if len(row) != 0)
+        print(numFramesData)
     csvfile.close()
     ballFound = np.zeros((numFramesData, 1))
     positionData = np.zeros((numFramesData, 3))
     velocityData = np.zeros((numFramesData, 3))
     pixelsKyle = np.zeros((numFramesData, 2))
     pixelsMegan = np.zeros((numFramesData, 2))
-    with open(dataFile, 'rb') as csvfile:
+    with open(dataFile, 'r') as csvfile:
         dataReader = csv.reader(csvfile, delimiter=',')
         for row in dataReader:
+            if len(row) == 0:
+                continue
             frameNumber = int(row[0]) - 1
             found = int(row[1])
             if found:
@@ -156,11 +159,11 @@ def main(argv1, argv2, argv3):
     ax4.set_zlim([yPosMin, yPosMax])
     ax4.set_zticks(np.arange(0, 4, 1))
     ax4.set_zlabel("Ball Height (m)")
-    ax4.set_aspect('equal')
+    ax4.set_aspect('auto')
     fig.show()
 
     # output image files
-    imFilename = '../UntrackedFiles/imageOutput/image' + str(currentFrame) + '.png'
+    imFilename = 'UntrackedFiles/ImageOutput/image' + str(currentFrame) + '.png'
     fig.set_size_inches(12, 8)
     plt.savefig(imFilename, dpi=200)
     # vidFrame = cv.imread(imFilename)
@@ -214,7 +217,7 @@ def main(argv1, argv2, argv3):
         fig4ax1.set_zlim([yPosMin, yPosMax])
         fig4ax1.set_zticks(np.arange(0, 4, 1))
         fig4ax1.set_zlabel("Ball Height (m)")
-        fig4ax1.set_aspect('equal')
+        fig4ax1.set_aspect('auto') #throws error as used to be 'equal'
         fig4.show()
 
 
@@ -306,27 +309,27 @@ def main(argv1, argv2, argv3):
 
             # Megan's camera
             fig1.show()
-            imFilename = '../UntrackedFiles/imageOutput/plot1.png'
+            imFilename = 'UntrackedFiles/imageOutput/plot1.png'
             fig1.savefig(imFilename, dpi=200)
 
             # Kyle's camera
             fig2.show()
-            imFilename = '../UntrackedFiles/imageOutput/plot2.png'
+            imFilename = 'UntrackedFiles/imageOutput/plot2.png'
             fig2.savefig(imFilename, dpi=200)
 
             # court graphic
             fig3.show()
-            imFilename = '../UntrackedFiles/imageOutput/plot3.png'
+            imFilename = 'UntrackedFiles/imageOutput/plot3.png'
             fig3.savefig(imFilename, dpi=200)
 
             # 3D scatterplot
             fig4.show()
-            imFilename = '../UntrackedFiles/imageOutput/plot4.png'
+            imFilename = 'UntrackedFiles/imageOutput/plot4.png'
             fig4.savefig(imFilename, dpi=200)
 
         # update plots
         fig.show()
-        imFilename = '../UntrackedFiles/imageOutput/image' + str(f) + '.png'
+        imFilename = 'UntrackedFiles/imageOutput/image' + str(f) + '.png'
         fig.set_size_inches(12, 8)
         fig.savefig(imFilename, dpi=200)
         #vidFrame = cv.imread(imFilename)
@@ -345,4 +348,4 @@ if __name__ == '__main__':
         print('Usage: VisualizeResults.py <video-file> <video-file> <data-file>')
         sys.exit(0)
     '''
-    main("Stereo\ Clips/stereoClip2_Kyle.mov", )
+    main("StereoClips/stereoClip4_Megan.mov", "StereoClips/stereoClip4_Kyle.mov", "CSVOutput/ballEst_stereoClip4.csv")

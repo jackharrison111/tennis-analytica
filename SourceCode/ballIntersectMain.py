@@ -17,7 +17,7 @@ def getBallCandidateRays(bf, cam, frame1, frame2):
     frameDiff2 = bf.rgbDiff(frame1, frame2)
     frameCornerMask = bf.GetCornernessMask(frame1, frame2)
     mask = bf.aveMask(frameDiff1, frameDiff2, frameCornerMask)
-    im2, contours, hier = cv2.findContours(mask,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+    contours, hier = cv2.findContours(mask,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
     candidates = [];
     for c in contours:
         center = cv2.minAreaRect(c)[0];
@@ -30,8 +30,8 @@ def main():
     fourcc = cv2.VideoWriter_fourcc(*'mp4v');
     kyleOutputVideo = cv2.VideoWriter('../UntrackedFiles/BallOutputKyle.mp4',fourcc, 60.0, (1920,1080));
     meganOutputVideo = cv2.VideoWriter('../UntrackedFiles/BallOutputMegan.mp4',fourcc, 60.0, (1920,1080));
-    meganFilename = '../UntrackedFiles/stereoClip5_Megan.mov'
-    kyleFilename = '../UntrackedFiles/stereoClip5_Kyle.mov'
+    meganFilename = '../StereoClips/stereoClip4_Megan.mov'
+    kyleFilename = '../StereoClips/stereoClip4_Kyle.mov'
 
     vrMegan1 = VideoReader(meganFilename)
     vrMegan2 = VideoReader(meganFilename)
@@ -138,9 +138,7 @@ def main():
         frameNum += 1;
         # <END WHILE LOOP>
 
-    with open('../UntrackedFiles/ballEst.csv', 'wb') as csvfile:
-        filewriter = csv.writer(csvfile, delimiter=',')
-        filewriter.writerows(csvData)
+
 
     vrKyle1.close()
     vrKyle2.close()
@@ -148,6 +146,11 @@ def main():
     vrMegan2.close()
     kyleOutputVideo.release();
     meganOutputVideo.release();
+    return csvData
 
 if __name__ == '__main__':
-        main()
+    csvData = main()
+
+    with open('../UntrackedFiles/ballEst.csv', 'w') as csvfile:
+        filewriter = csv.writer(csvfile, delimiter=',')
+        filewriter.writerows(csvData)
