@@ -20,6 +20,8 @@ Starting with the court lines. I use a filter for white on the image, and then u
 
 ![Alt text](saved_plots/best_selected.png?raw=true "Title")
 
-I've picked the best lines (highlighted in green) by hand, but the goal is to automate this! That's the next step! Potentially using K-Means clustering and known horizontal/vertical angles of the court.
+![Alt text](saved_plots/rho_theta_plot.png?raw=true "Title")
+
+I've picked the best lines (highlighted in green) by hand, but the goal is to automate this! That's the next step. Potentially using K-Means clustering and known horizontal/vertical angles of the court.
 
 
