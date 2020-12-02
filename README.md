@@ -29,7 +29,7 @@ KMeans clustering doesn't do well at finding the exact lines I want - instead I 
 
 ![Alt text](saved_plots/best_selection-thresholding.png?raw=true "Title")
 
-I can then solve the selected lines for the intersection points, given that $\rho$ and $\theta$ are known of each line.
+I can then solve the selected lines for the intersection points, given that rho and theta are known of each line.
 The intersection works well:
 
 ![Alt text](saved_plots/intersections_found.png?raw=true "Title")
