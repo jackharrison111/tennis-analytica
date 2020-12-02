@@ -25,3 +25,10 @@ Starting with the court lines. I use a filter for white on the image, and then u
 I've picked the best lines (highlighted in green) by hand, but the goal is to automate this! That's the next step. Potentially using K-Means clustering and known horizontal/vertical angles of the court.
 
 
+KMeans clustering doesn't do well at finding the exact lines I want - instead I may use it later for separating horizontal/vertical lines for intersections. For now I have used a specific thresholding for finding the lines (which may not be too bad if the angle of the camera stays constant - could just be taken as fixed viewing position). This has helped me to automatically select the lines of interest, and so it works on any frame like so:
+
+![Alt text](saved_plots/best_selection-thresholding.png?raw=true "Title")
+
+I can then solve the selected lines for the intersection points, given that $\rho$ and $\theta$ are known of each line, and $ x = \rho * \cos\theta $ , $ y = \rho * \sin\theta$.
+
+
