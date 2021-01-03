@@ -24,6 +24,7 @@ def getBallCandidateRays(bf, cam, frame1, frame2):
         ray = cam.GetRay(center);
         candidates.append(ray);
     return (np.dstack([mask,mask,mask]), candidates)
+
 def main():
 
     # Pretty videos:

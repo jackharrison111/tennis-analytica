@@ -52,9 +52,9 @@ filename2 = "HomeClips/Dad/behindFence/middleRally2_Dad.mp4"
 filename3 = "HomeClips/edited/Dad/rally1-edit_Dad.mp4"
 
 vr = VideoReader(filename=filename2)
-vr.setNextFrame(65)
+#vr.setNextFrame(65)
 ret, frame = vr.readFrame()
-##cv2.imshow("frame", frame)
+cv2.imshow("frame", frame)
 num_frames = vr.numFrames
 height, width = frame.shape[:2]
 
@@ -265,7 +265,7 @@ for line1 in strong_vert:
 isects = np.array(isects)
 for z in isects:
     cv2.circle(draw_lines, (z[0], z[1]), 5, (0,0,255), 3)
-cv2.imwrite("saved_plots/intersections_found.png", draw_lines)
+#cv2.imwrite("saved_plots/intersections_found.png", draw_lines)
 cv2.imshow("points", draw_lines)
 
 
@@ -274,10 +274,7 @@ cv2.imshow("points", draw_lines)
 
 
 
-
-
-
-
+'''
 
 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 gray_sm = cv2.bilateralFilter(gray,30,25,75)
@@ -288,12 +285,8 @@ gray_mask = cv2.inRange(gray_sm, lower, upper)
 #cv2.imshow("gray_mask", gray_mask)
 
 
-
-
-
 hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV);
 #cv2.imshow("hsv", hsv)
-
 
 hls = cv2.cvtColor(smooth, cv2.COLOR_BGR2HLS)
 #cv2.imshow("hls", hls)
@@ -305,4 +298,4 @@ hls_mask = cv2.inRange(hls, lower, upper)
 hls_open = cv2.morphologyEx(hls_mask, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,2)))
 #cv2.imshow("hls_open", hls_open)
 
-
+'''

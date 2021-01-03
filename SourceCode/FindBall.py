@@ -2,7 +2,7 @@
 # for now only ball candidates, but utlimately only moving balls
 
 # import video reader class. File in same folder (src)
-from VideoReader import VideoReader
+#from VideoReader import VideoReader
 # still need opencv for other image processing stuff
 import cv2
 
