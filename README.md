@@ -34,7 +34,12 @@ The intersection works well:
 
 ![Alt text](saved_plots/intersections_found.png?raw=true "Title")
 
-Next job is to try and calibrate the camera, or detect the ball.
+Several models to try for player tracking:
+FasterRCNN
+YOLO
+YOLO_tiny
+
+
 
 
 
