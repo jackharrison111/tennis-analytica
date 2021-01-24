@@ -15,6 +15,7 @@ Todo list:
 * Ball detection
 * Player position detection
 
+## Line detection
 
 Starting with the court lines. I use a filter for white on the image, and then use OpenCV's HoughLines to find the all the lines in the image.
 
@@ -34,6 +35,9 @@ The intersection works well:
 
 ![Alt text](saved_plots/intersections_found.png?raw=true "Title")
 
+
+## Player tracking
+
 Several models to try for player tracking: FasterRCNN, YOLO, YOLO_tiny
 
 ![Alt text](saved_plots/player_identification_YOLO.jpg?raw=true "Title")
@@ -46,7 +50,8 @@ KMeans clustering based off box centers gives reasonable results:
 I can forsee issues when the YOLO_tiny model returns nothing for the background player, so will need to implement a minimum separation.
 
 As an initial start it seems reasonable - the runtime is low which is the main goal of the project, which is why YOLO_tiny will be used over FasterRCNN.
-Ball detection next.
+
+## Ball detection
 
 
 
