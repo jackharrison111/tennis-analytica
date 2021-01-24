@@ -39,7 +39,11 @@ Several models to try for player tracking: FasterRCNN, YOLO, YOLO_tiny
 ![Alt text](saved_plots/player_identification_YOLO.jpg?raw=true "Title")
 
 YOLO returns boundary boxes. Can do area/intersection with thresholding to reduce boxes, but going to try and use cluster centroids instead.
+KMeans clustering based off box centers gives reasonable results:
 
+![Alt text](saved_plots/YOLO_tiny_centroids.PNG?raw=true "Title")
+
+I can forsee issues when the YOLO_tiny model returns nothing for the background player, so will need to implement a minimum separation.
 
 
 
