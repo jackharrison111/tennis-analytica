@@ -45,6 +45,8 @@ KMeans clustering based off box centers gives reasonable results:
 
 I can forsee issues when the YOLO_tiny model returns nothing for the background player, so will need to implement a minimum separation.
 
+As an initial start it seems reasonable - the runtime is low which is the main goal of the project, which is why YOLO_tiny will be used over FasterRCNN.
+Ball detection next.
 
 
 
