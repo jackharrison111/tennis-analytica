@@ -34,10 +34,11 @@ The intersection works well:
 
 ![Alt text](saved_plots/intersections_found.png?raw=true "Title")
 
-Several models to try for player tracking:
-FasterRCNN
-YOLO
-YOLO_tiny
+Several models to try for player tracking: FasterRCNN, YOLO, YOLO_tiny
+
+![Alt text](saved_plots/player_identification_YOLO.jpg?raw=true "Title")
+
+YOLO returns boundary boxes. Can do area/intersection with thresholding to reduce boxes, but going to try and use cluster centroids instead.
 
 
 
