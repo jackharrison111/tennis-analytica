@@ -53,7 +53,10 @@ As an initial start it seems reasonable - the runtime is low which is the main g
 
 NB. thinking about smoothing between frames to allow continuity of player positioning
 
-## Ball detection
+## Camera Calibration
+
+Cameras have intrinsic parameters that distort the appearance of 3D scenes into 2D images. The standard way of finding these parameters is currently through calibrating the camera on a checkerboard, after taking several photos from different angles. If this is possible from photos of a checkerboard - why is it not possible from photos of a tennis court? Instead of squares we have service boxes/tramlines. Being able to calibrate your camera from photos of the court would allow greater flexibility for use.
+
 
 
 
