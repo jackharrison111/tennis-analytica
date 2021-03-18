@@ -51,6 +51,8 @@ I can forsee issues when the YOLO_tiny model returns nothing for the background 
 
 As an initial start it seems reasonable - the runtime is low which is the main goal of the project, which is why YOLO_tiny will be used over FasterRCNN.
 
+NB. thinking about smoothing between frames to allow continuity of player positioning
+
 ## Ball detection
 
 
